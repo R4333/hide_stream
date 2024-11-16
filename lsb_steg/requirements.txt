@@ -1,0 +1,12 @@
+Click
+mp3stego-lib
+Pillow
+numpy; python_version>='3.10'
+numpy<2.1.0; python_version>='3.9' and python_version<'3.10'
+numpy<1.25.0; python_version>='3.8' and python_version<'3.9'
+bitarray>=2.5.1
+numpy>=1.19.5
+numba>=0.55.2
+scipy>=1.5.4
+tqdm>=4.64.0
+pydub
