@@ -26,7 +26,7 @@ The project will include the following sub-tools:
 2. **LSBSteg**:
    - Purpose: To apply LSB steganography on image files, particularly PNG and BMP formats.
 3. **MP3Steg**:
-   - Purpose: To perform LSB steganography on MP3 files, ensuring data is hidden efficiently without significant impact on audio quality.
+   - Purpose: Hides data on MP3 files, ensuring data is hidden efficiently without significant impact on audio quality.
 4. **StegDetect**:
    - Purpose: To detect and analyze steganographic content across supported file formats.
 
