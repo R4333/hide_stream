@@ -1,93 +1,200 @@
-# HideStream: LSB Steganography Tool Suite for PNG, BMP, WAV, and MP3 Files
+# HideStream: LSB Steganography Tool Suite
 
-## Group 38 Members
+**HideStream** is a comprehensive tool suite that provides functionality for **embedding, extracting, and detecting steganographic data** using **Least Significant Bit (LSB) steganography**. It supports file types including **PNG, BMP, WAV, and MP3**. This project includes both a **Graphical User Interface (GUI)** and a **Command-Line Interface (CLI)** for flexible user interaction.
 
-- **21L-5288** Muhammad Abdullah
-- **21L-7577** Saad Ali
-- **21L-1876** Zeeshan Hamid
+---
 
-## 1. Project Overview
+## Features
 
-**HideStream** is a versatile LSB steganography tool suite designed to securely embed and detect hidden data within various file formats, including PNG, BMP, WAV, and MP3. The tool suite will consist of four sub-tools: **WavSteg**, **LSBSteg**, **MP3Steg**, and **StegDetect**, each specifically designed to either embed hidden data or detect steganographic content within these formats. The primary objective is to create a robust, efficient, and user-friendly solution for steganography practitioners, researchers, and security enthusiasts.
+### Graphical User Interface (GUI)
 
-## 2. Objectives
+- Interactive menus for performing steganography on different file types.
+- Integrated real-time console for user feedback.
+- Progress bars for long-running tasks.
+- File dialogs for user-friendly file selection and output path configuration.
 
-- **Develop a comprehensive LSB steganography suite** that supports various file types (PNG, BMP, WAV, and MP3).
-- **Create individual tools for different formats** (WAV, MP3, PNG, BMP) to ensure optimized performance and functionality.
-- **Implement a detection mechanism** to identify and analyze hidden data in these file formats, ensuring users can verify the integrity of media files.
-- **Cross-Platform Compatibility** with Windows, macOS, and Linux platforms.
+### Command-Line Interface (CLI)
 
-## 3. Sub-Tools
+- Structured subcommands for automating and scripting operations.
+- Supports options for LSB counts, file paths, and more.
+- Works seamlessly across supported file types.
 
-The project will include the following sub-tools:
+---
 
-1. **WavSteg**:
-   - Purpose: To embed and extract hidden information within WAV audio files using LSB steganography.
-2. **LSBSteg**:
-   - Purpose: To apply LSB steganography on image files, particularly PNG and BMP formats.
-3. **MP3Steg**:
-   - Purpose: Hides data on MP3 files, ensuring data is hidden efficiently without significant impact on audio quality.
-4. **StegDetect**:
-   - Purpose: To detect and analyze steganographic content across supported file formats.
+## Supported Operations and File Types
 
-## 4. Features
+### Sub-Tools
 
-### 1. WavSteg Features:
+- **WavSteg**:
+  - Embeds and extracts hidden data within WAV audio files.
+  - Supports configurable LSB counts to balance between data capacity and audio quality.
+- **LSBSteg**:
+  - Handles image steganography for PNG and BMP files.
+  - Maintains image quality while optimizing storage capacity.
+- **MP3Steg**:
+  - Embeds data in MP3 files with minimal quality degradation.
+  - Extracts hidden data using custom delimiters for separation.
+- **StegDetect**:
+  - Analyzes and visualizes least significant bits in images.
+  - Scans for hidden data in PNG, BMP, WAV, and MP3 files.
 
-- Embeds secret messages within the LSBs of WAV audio samples.
-- Customizable options for the number of bits used per sample to balance between capacity and audio quality.
-- Supports extraction of embedded messages and verifies their integrity.
-- Preserves audio fidelity while maximizing data hiding capacity.
+---
 
-### 2. LSBSteg Features:
+## Requirements
 
-- Enables embedding of hidden text or binary data within the LSBs of PNG and BMP image pixels.
-- Supports both RGB and grayscale images, with adjustable bit depth usage.
-- Capable of extracting hidden data from steganographic PNG and BMP images.
-- Maintains image quality and file size while optimizing storage capacity.
+- **Python 3.8+**
+- Required Python packages:
+  - `Pillow`
+  - `Click`
+  - `wave`
+  - `tkinter` (built-in with Python)
 
-### 3. MP3Steg Features:
+Install dependencies:
 
-- Embeds secret information within MP3 audio frames, optimizing for minimal audio quality loss.
-- Adjustable embedding parameters to support various MP3 bit rates and formats.
-- Provides message extraction functionality for retrieving and validating hidden data.
-- Incorporates techniques to minimize artifacts and preserve original audio quality.
-
-### 4. StegDetect Features:
-
-- Scans PNG, BMP, WAV, and MP3 files for potential steganographic manipulation.
-- Uses statistical analysis and pattern recognition to detect modified LSBs.
-- Generates detailed reports indicating the likelihood and possible presence of hidden data.
-- Compatible with multiple file formats, ensuring comprehensive coverage and reliable analysis.
-
-## 5. Methodology
-
-- **Research and Analysis**:
-  - Study existing LSB steganography algorithms and techniques for each file type.
-  - Analyze potential vulnerabilities and methods for optimizing steganographic capacity without compromising file quality.
-- **Development and Implementation**:
-  - Develop each sub-tool separately, ensuring each tool adheres to the format-specific requirements.
-  - Integrate the tools into a cohesive suite with a unified user interface (CLI-based initially, with future GUI development).
-- **Testing and Validation**:
-  - Test the tools extensively with different file sizes and types to measure performance, capacity, and quality trade-offs.
-  - Validate the detection tool (StegDetect) with known steganographic files to ensure accurate and reliable analysis.
-
-## 6. Expected Outcomes
-
-- A fully functional suite of tools capable of performing LSB steganography on PNG, BMP, WAV, and MP3 files.
-- A detection tool that can analyze and verify the presence of hidden data in media files, with high accuracy and reliability.
-- Comprehensive documentation covering installation, usage instructions, and technical details.
-
-## 7. Future Scope
-
-- **GUI Development**: Create a user-friendly graphical interface for non-technical users.
-- **Expansion to Other Formats**: Expand steganography support to additional file formats like GIF, JPEG, and other audio/video formats.
-- **Machine Learning Integration**: Enhance StegDetect using machine learning models to improve detection accuracy and reduce false positives.
-
-## 8. Conclusion
-
-This project will provide a powerful and versatile LSB steganography tool suite, enabling secure and efficient data hiding and detection across multiple file types. By supporting PNG, BMP, WAV, and MP3 formats, it offers flexibility for various use cases and caters to both technical and non-technical audiences. The proposed sub-tools and future developments ensure the project's relevance and adaptability in the rapidly evolving field of steganography.
-
+```bash
+pip install pillow click
 ```
 
+---
+
+## How to Use
+
+### GUI
+
+Run the GUI with:
+
+```bash
+python gui.py
 ```
+
+### CLI
+
+Run the CLI with:
+
+```bash
+python cli.py --help
+```
+
+#### Example CLI Commands
+
+- **MP3 Steganography**:
+  - Hide data: `python cli.py mp3steg -h -i input.mp3 -s secret.txt -o output.mp3`
+  - Extract data: `python cli.py mp3steg -r -i input.mp3 -o extracted.txt`
+- **Image Steganography**:
+  - Hide data: `python cli.py steglsb -h -i input.png -s secret.txt -o output.png -n 2`
+  - Extract data: `python cli.py steglsb -r -i input.png -o extracted.txt -n 2`
+- **WAV Steganography**:
+  - Hide data: `python cli.py wavsteg -h -i input.wav -s secret.txt -o output.wav -n 2`
+  - Extract data: `python cli.py wavsteg -r -i input.wav -o extracted.txt -n 2 -b 1000`
+- **LSB Detection**:
+  - Detect LSB changes: `python cli.py stegdetect -i input.png -n 2`
+
+---
+
+## File Structure
+
+```plaintext
+.
+├── gui.py            # GUI implementation
+├── cli.py            # Command-line interface
+├── LSBSteg.py        # Image steganography module
+├── WavSteg.py        # WAV steganography module
+├── MP3hide.py        # MP3 steganography module
+├── StegDetect.py     # LSB detection module
+├── README.md         # Documentation
+```
+
+---
+
+## Documentation: Architecture
+
+### Overview
+
+**HideStream** is modular, integrating distinct sub-tools for each supported file type into a unified interface. This architecture ensures scalability and maintainability while allowing extensions for additional file types in the future.
+
+### Block Diagram
+
+```plaintext
+┌──────────────────────────────┐
+│           CLI (cli.py)       │
+│  Command-line functionality  │
+└──────────────────────────────┘
+               ▲
+               │
+┌──────────────────────────────┐
+│           GUI (gui.py)       │
+│  Graphical user interface    │
+└──────────────────────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│    Image Steganography       │
+│    (LSBSteg.py)              │
+│ - hide_data, recover_data    │
+│ - analysis                   │
+└──────────────────────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│    MP3 Steganography         │
+│    (MP3hide.py)              │
+│ - hide_file_in_mp3           │
+│ - reveal_file_from_mp3       │
+└──────────────────────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│    WAV Steganography         │
+│    (WavSteg.py)              │
+│ - hide_data, recover_data    │
+└──────────────────────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│    LSB Detection             │
+│    (StegDetect.py)           │
+│ - show_lsb                   │
+└──────────────────────────────┘
+```
+
+---
+
+## Security Analysis
+
+### Findings
+
+1. **Image Steganography**:
+   - Effective for hiding small to medium amounts of data with negligible quality loss.
+2. **WAV Steganography**:
+   - Works well for lossless formats; vulnerable to lossy compression.
+3. **MP3 Steganography**:
+   - Simple appending mechanism makes it prone to detection via file inspection.
+4. **LSB Detection**:
+   - Provides insight into hidden data but cannot decode without parameters.
+
+### Strengths
+
+- **Modular Architecture**: Simplifies development and extension.
+- **Usability**: GUI for ease of access; CLI for automation.
+- **Versatility**: Supports multiple media types and steganographic operations.
+
+### Weaknesses
+
+- **Compression Vulnerabilities**: Lossy compression in audio can corrupt embedded data.
+- **Encryption**: Hidden data is not encrypted, which may expose sensitive information.
+
+### Lessons Learned
+
+- Combining steganography with encryption ensures robust data protection.
+- A modular structure is ideal for scalability.
+- User feedback is crucial for designing intuitive tools.
+
+---
+
+### Acknowledgments
+
+**Group 38 Members**:
+
+- Muhammad Abdullah (21L-5288)
+- Saad Ali (21L-7577)
+- Zeeshan Hamid (21L-1876)
